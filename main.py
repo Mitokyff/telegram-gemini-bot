@@ -1,4 +1,7 @@
 import telegram
+print(f"[SERVER DEBUG] python-telegram-bot version: {telegram.__version__}")
+
+import telegram
 from telegram import Update
 from telegram.ext import ApplicationBuilder, MessageHandler, filters, ContextTypes, CommandHandler
 import google.generativeai as genai
