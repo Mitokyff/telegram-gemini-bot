@@ -355,6 +355,46 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             await context.bot.send_chat_action(chat_id=update.effective_chat.id, action=telegram.constants.ChatAction.TYPING)
 
 
+# def main():
+#     print("Bot wird gestartet...")
+    
+#     create_table()
+    
+#     app = ApplicationBuilder().token(TELEGRAM_TOKEN).build()
+    
+#     add_handler = ConversationHandler(
+#         entry_points=[CommandHandler("add", add_start)],
+#         states={
+#             ADD_TASK: [MessageHandler(filters.TEXT & ~filters.COMMAND, add_task_step)],
+#         },
+#         fallbacks=[CommandHandler("cancel", cancel)],
+#     )
+#     done_handler = ConversationHandler(
+#         entry_points=[CommandHandler("done", done_command)],
+#         states={
+#         DONE_TASK: [MessageHandler(filters.TEXT & ~filters.COMMAND, done_task_step)],
+#         },
+#         fallbacks=[CommandHandler("cancel", cancel)],
+#     )
+#     delete_handler = ConversationHandler(
+#         entry_points=[CommandHandler("delete", delete_command)],
+#         states={
+#             DELETE_TASK: [MessageHandler(filters.TEXT & ~filters.COMMAND, delete_task_step)],
+#         },
+#         fallbacks=[CommandHandler("cancel", cancel)],
+#     )
+
+#     app.add_handler(CommandHandler("start", start_command))
+#     app.add_handler(add_handler)
+#     app.add_handler(done_handler)
+#     app.add_handler(delete_handler)
+#     app.add_handler(CommandHandler("list", list_command))
+#     app.add_handler(MessageHandler(filters.PHOTO, handle_photo))
+#     app.run_polling()
+#     app.add_handler(MessageHandler(filters.TEXT | filters.VOICE, handle_message))
+
+# if __name__ == "__main__":
+#     main()
 def main():
     print("Bot wird gestartet...")
     
@@ -372,7 +412,7 @@ def main():
     done_handler = ConversationHandler(
         entry_points=[CommandHandler("done", done_command)],
         states={
-        DONE_TASK: [MessageHandler(filters.TEXT & ~filters.COMMAND, done_task_step)],
+            DONE_TASK: [MessageHandler(filters.TEXT & ~filters.COMMAND, done_task_step)],
         },
         fallbacks=[CommandHandler("cancel", cancel)],
     )
@@ -384,14 +424,17 @@ def main():
         fallbacks=[CommandHandler("cancel", cancel)],
     )
 
+    # Регистрируем ВСЕ обработчики здесь, перед run_polling()
     app.add_handler(CommandHandler("start", start_command))
     app.add_handler(add_handler)
     app.add_handler(done_handler)
     app.add_handler(delete_handler)
     app.add_handler(CommandHandler("list", list_command))
     app.add_handler(MessageHandler(filters.PHOTO, handle_photo))
-    app.run_polling()
     app.add_handler(MessageHandler(filters.TEXT | filters.VOICE, handle_message))
+    
+    # Теперь запускаем бота. Он будет использовать все зарегистрированные обработчики.
+    app.run_polling()
 
 if __name__ == "__main__":
     main()
