@@ -10,7 +10,7 @@ from google.api_core.exceptions import ResourceExhausted
 import sqlite3
 
 # --- Konfiguration ---
-TELEGRAM_TOKEN = "7463890992:AAGHWvIR-XzO-VCdBR5bEr-UbIY6XcKI30I"
+TELEGRAM_TOKEN = "7463890992:AAG3MmqPlQ2jZ_UXkgnXIbMvUhG1P1bqqko"
 GEMINI_API_KEY = "AIzaSyAnnsWGT0ykhKWAT9ryWN-esPhW-RMTYa8"
 
 # --- Gemini API-Initialisierung ---
